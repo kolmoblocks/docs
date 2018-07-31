@@ -1,0 +1,144 @@
+{{ partial "header.html" . }}
+<body>
+<div id="top">
+<!-- Hero Start -->
+<div class="hero is-{{ .Site.Params.config.heroHeight | default "fullheight" }}">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <!-- Title Start -->
+            <h1 class="bold-title {{ if .Site.Params.config.fadeEffect | default true }}fade-in one{{ end }}">
+
+                 {{ .Site.Params.config.heroTitle | default "Hero Title" }}
+            </h1>
+            <!-- Title End -->
+
+            <!-- Tagline Start-->
+            <h3 class="subtitle is-3 {{ if .Site.Params.config.fadeEffect | default true }}fade-in two{{ end }}">
+                {{ .Site.Params.config.heroSubtitle | default "Hero Subtitle" }}
+            </h3>
+            <!-- Tagline End-->
+
+            <!-- Social Start -->
+            <div class=" {{ if .Site.Params.config.fadeEffect | default true }}fade-in three{{ end }}">
+                {{ partial "buttons.html" . }}
+            </div>
+            <!-- Social End -->
+        </div>
+    </div>
+<div class="hero-foot {{ if .Site.Params.config.fadeEffect | default true }}fade-in three{{ end }}">
+<hr>
+<!-- Navbar Start -->
+<nav class="nav-center">
+    {{/* Checking to see if About section is activated */}}
+    {{ if (.Site.Params.components.about) }}
+        {{/* making sure about page exists */}}
+        {{ if (.Site.GetPage "page" "about") }}
+          <a class="nav-item" href="#about">About</a>
+        {{ end }}
+    {{ end }}
+    {{/* Checking to see if research section is activated */}}
+    {{ if (.Site.Params.components.researchLibrary) }}
+        {{/* making sure research has entries */}}
+        {{ if (.Site.GetPage "section" "papers") }}
+          <a class="nav-item" href="#research">Research Library</a>
+        {{ end }}
+    {{ end }}
+
+    {{/* Checking to see if project section is activated */}}
+    {{ if .Site.Params.components.project }}
+    {{/* making sure project has entries */}}
+      {{ if (.Site.GetPage "section" "projects") ne (nil) }}
+        <a class="nav-item" href="#projects">Projects</a>
+      {{ end }}
+    {{ end }}
+
+    {{/* Checking to see if blog section is activated */}}
+
+    {{ if (.Site.Params.components.blog) }}
+        {{/* making sure about blog has entries */}}
+        {{ if (.Site.GetPage "section" "blog") ne (nil) }}
+          <a class="nav-item" href="#blog">Blog</a>
+        {{ end }}
+    {{ end }}
+</nav>
+<hr>
+</div>
+<!-- End nav bar -->
+</div>
+<!-- End Hero -->
+
+<div class="section no-padding {{ if .Site.Params.config.fadeEffect | default true }}fade-in three{{ end }}">
+
+  <!-- Start About -->
+  {{/* Checking to see if About section is activated */}}
+  {{ if (.Site.Params.components.about) }}
+    {{ if (.Site.GetPage "page" "about") }}
+      <div class="section" id="about">
+          <div class="container">
+          <h2 class="title is-2 has-text-centered">About</h2>
+              <div class="columns">
+                  <div class="column markdown">
+                      {{ (.Site.GetPage "page" "about").Content }}
+                  </div>
+              </div>
+          </div>
+      <div class="container has-text-centered top-pad"><a href="#top"><i class="fa fa-arrow-up"></i></a></div>
+      </div>
+    {{ end }}
+  {{ end }}
+  <!-- End About -->
+
+  <!-- Start Research -->
+  {{/* Checking to see if research section is activated */}}
+  {{ if .Site.Params.components.researchLibrary }}
+    {{/* making sure research has entries */}}
+    {{ if (.Site.GetPage "section" "papers") ne (nil) }}
+      <div class="section" id="research">
+          {{ partial "research.html" . }}
+      </div>
+      <div class="container"><hr></div>
+    {{ end }}
+  {{ end }}
+  <!-- End Research -->
+
+
+  <!-- Start projects -->
+  {{/* Checking to see if project section is activated */}}
+  {{ if .Site.Params.components.project }}
+  {{/* making sure project has entries */}}
+    {{ if (.Site.GetPage "section" "projects") ne (nil) }}
+      <div class="section" id="projects">
+          {{ partial "projects.html" . }}
+      </div>
+      <div class="container"><hr></div>
+    {{ end }}
+  {{ end }}
+  <!-- End projects -->
+
+
+  <!-- Start Blog  -->
+  {{ if .Site.Params.components.blog }}
+  {{/* making sure about blog has entries */}}
+    {{ if (.Site.GetPage "section" "blog") ne (nil) }}
+      <div class="section" id="blog">
+          {{ partial "blogsection.html" . }}
+      </div>
+      <div class="container"><hr></div>
+    {{ end }}
+  {{ end }}
+  <!-- End Blog  -->
+
+{{ partial "footer.html" . }}
+</div>
+<script>
+$('a[href^="#"]').click(function(e) {
+    e.preventDefault();
+    var target = this.hash;
+    $('html, body').animate({
+    scrollTop: $(target).offset().top
+    }, 500);
+    return false;
+})
+</script>
+
+</body>

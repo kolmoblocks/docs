@@ -1,0 +1,64 @@
+{{ partial "header.html" . }}
+
+<body>
+    <div class="section" id="top">
+        <div class="container">
+                {{ partial "nav-single.html" . }}
+        </div>
+        
+    
+        <!-- Parent section -->
+        <div class="container hero {{ if .Site.Params.config.fadeEffect }} fade-in one {{ end }}">
+            <!-- Begin Title -->
+            <h1 class="tagline">{{ if .Params.fullTitle }}  {{ .Params.fullTitle }}{{ else }} {{ .Params.Title }} {{ end }}</h1>
+            <div class="post-data">
+                {{  .Params.name }} | {{ .Date.Format (.Site.Params.config.dateFormat | default "Jan 02, 2006") }} | {{ if eq 1 .ReadingTime }}{{ .ReadingTime }} minute
+                read{{ else }}{{ .ReadingTime }} minutes read{{ end }}
+            </div>
+        </div>
+        <!-- End Title -->
+
+        <div class="section {{ if .Site.Params.config.fadeEffect }} fade-in two {{ end }}">
+
+
+            <div class="container markdown {{ if .Site.Params.config.fadeEffect }} fade-in two {{ end }} top-pad">
+
+
+                {{ if .Params.image }}
+                <div class="has-text-centered">
+                    <img src="{{ .Params.image }}" class="img-responsive">
+                </div>
+                {{ end }} {{ .Content }}
+            </div>
+
+            <div class="disqus">
+                {{ template "_internal/disqus.html" . }}
+            </div>
+
+            <div class="container has-text-centered top-pad">
+                <hr>
+                <a href="#top">
+                    <i class="fa fa-arrow-up"></i>
+                </a>
+                <hr>
+            </div>
+
+            {{ partial "footer.html" . }}
+        </div>
+        <!-- End fade in two -->
+    </div>
+    <!-- End parent section -->
+
+    <!-- Bitty scrolling links script -->
+    <script>
+        $('a[href^="{{ .Permalink }}#"]').click(function (e) {
+            e.preventDefault();
+            var target = this.hash;
+            $('html, body').animate({
+                scrollTop: $(target).offset().top
+            }, 500);
+            return false;
+        })
+    </script>
+
+</body>

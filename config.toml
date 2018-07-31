@@ -1,0 +1,91 @@
+publishDir="public"
+
+# Your domain name. Must end with "/"
+baseURL                     = "https://kolmoblocks.github.io"
+# languageCode
+languageCode                = "en-us"
+# Site title
+title                       = "Kolmoblocks: self-describing data encoding"
+theme = "hon"
+
+# https://help.farbox.com/pygments.html
+pygmentsStyle               = "monokai"
+pygmentsCodefences          = true
+enforce_ssl                 = false
+
+
+# Enable Disqus for comments https://gohugo.io/content-management/comments
+# disqusshortname           = ""
+# Enable Google Analytics https://gohugo.io/templates/internal/#google-analytics
+# googleAnalytics           = ""
+[params.config]
+    # Choose 'light' or 'dark'
+    theme                   = "light"
+    # Include custom css files e.g. ["css/foo.css", "css/bar.css"]
+    customCSS               = []
+    # Turn on/off the fade-in effect
+    fadeEffect              = true
+    # Max 160 characters show in search results
+    description             = "HON Project"
+    # faviconFile             = "img/fav.ico"
+    faviconFile             = ""
+    # Add the current unix timestamp in query string for cache busting css
+    # assets (relevant in development mode)
+    cacheBuster             = false
+    # Date format
+    dateFormat              = "Jan 2, 2006"
+    # Date full format
+    dateFullFormat          = "Mon Jan 2 2006 15:04:05 EST"
+    # Choose size of Hero Section.
+    # Input either 'medium' or 'large' or 'fullheight'
+    heroHeight              = "fullheight"
+    # Title
+    heroTitle               = "Kolmoblocks"
+    # a tagline for the title
+    heroSubtitle            = "self-describing data encoding for Merkle DAG"
+
+# activating different components of the website
+[params.components]
+    about                   = true
+    researchLibrary         = true
+    project                 = true
+    team                    = true
+    blog                    = true
+    ## Show "Share this:" social buttons
+    sharing                 = true
+[params.research]
+    # Maximum number of research papers to show on home page. Unset or
+    # comment out to show all research papers.
+    limit                   = 5
+    # For research papers without image
+    placeholderImage        = "/img/plant.jpg"
+
+
+[params.project]
+    # Maximum number of projects to show on home page.
+    # Unset or comment out to show all projects.
+    limit                   = 5
+    # For Projects without image
+    placeholderImage        = "/img/workday.jpg"
+[params.blog]
+
+    # Set 'true' to list all posts on home page, or set 'false' to link to s
+    # eparate blog list page
+    showAllPostsOnHomePage  = false
+    # Show latest blog post summary
+    showLatestPosts         = true
+[params.sharing]
+    twitter                 = true
+    facebook                = true
+    googleplus              = true
+
+
+# Social icons appear in introduction and contact section. Add as many more as
+# you like.
+# Find icon names here: http://fontawesome.io/cheatsheet/
+[[params.buttons]]
+    url                     = "/papers/kolmoblocks/"
+    text                    = "Read Whitepaper"
+[[params.buttons]]
+    url                     = "https://github.com/"
+    icon                    = "Watch a Talk"
