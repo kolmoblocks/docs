@@ -12,7 +12,7 @@ draft: false
         <p class="heading">Send the ability to reproduce the data; not data itself</p>
         <div class="content is-small">
         <p>
-            Humans can just say  "a picture of a horse wearing a sombrero" and be understood. In the same way, kolmoblocks reference and reuse other data blocks to send the message, and by design build up a vocabulary of reusable data.
+            Computers share pictures as pixels, but humans can just say  "a horse wearing a sombrero" and be understood, relying on the reusable knowledge of what a "sombrero" and a "horse" is. In the same way, kolmoblocks reference and reuse other data blocks to send the message, building up an emergent vocabulary of reusable data chunks.
         </p>
         </div>
         </div>
@@ -22,7 +22,7 @@ draft: false
          <p><img src="img/machine.png" class="noborder" style="height:128px;"></p>
         <p class="heading">Bundle data with the code to read it</p>
         <div class="content is-small">
-        <p> In kolmoblocks, the data and the code to decode the data's format is distributed via the same channel. Kolmoblocks are <a href="webassembly.org">Webassembly</a> programs that output the requested data, and thus can use and embed any encoding and codec without having to distribute the dedicated software for it.  
+        <p> With kolmoblocks, the data and the code to decode the data's format is distributed through the same channel. Kolmoblocks are <a href="webassembly.org">Webassembly</a> programs that yeild the extracted data as the functions' output, and thus can implement any compression or codec algorithm.  
         </p>
         </div>
         </div>
