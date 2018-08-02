@@ -1,5 +1,5 @@
 ---
-title: "Kolmoblocks"
+title: "whitepaper"
 fullTitle: "Kolmoblocks: composability for content distribution based on Merkle DAGs"
 name: "Dmitry Borzov"
 date: 2018-07-15T18:02:42-04:00

@@ -1,0 +1,61 @@
+{{ partial "header.html" . }}
+<body>
+<div id="top">
+    <div class="container">
+                {{ partial "nav-single.html" . }}
+    </div>
+
+<!-- Hero Start -->
+<div class="hero is-dark">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <!-- Title Start -->
+            <h1 class="title {{ if .Site.Params.config.fadeEffect | default true }}fade-in one{{ end }}">
+
+                 {{ .Site.Params.config.heroTitle | default "Hero Title" }}
+            </h1>
+            <!-- Title End -->
+
+            <!-- Tagline Start-->
+            <h3 class="is-3 fade-in two">
+                is a way to send data (a network encoding format) 
+                as programs for Webassembly-based sandboxed runtime that reference other data blocks based on a crypto-hash naming scheme  
+            </h3>
+            <!-- Tagline End-->
+            <br>
+            <!-- Social Start -->
+            <div class=" {{ if .Site.Params.config.fadeEffect | default true }}fade-in three{{ end }}">
+                {{ partial "buttons.html" . }}
+            </div>
+            <!-- Social End -->
+        </div>
+    </div>
+
+</div>
+<!-- End Hero -->
+
+<div class="section no-padding {{ if .Site.Params.config.fadeEffect | default true }}fade-in three{{ end }}">
+
+  <!-- Start About -->
+      <div class="section" id="about">
+          <div class="container">
+            <!-- <h2 class="title is-2 has-text-centered">Why</h2> -->
+            {{ (.Site.GetPage "page" "about").Content }}
+          </div>
+      </div>
+  <!-- End About -->
+
+{{ partial "footer.html" . }}
+</div>
+<script>
+$('a[href^="#"]').click(function(e) {
+    e.preventDefault();
+    var target = this.hash;
+    $('html, body').animate({
+    scrollTop: $(target).offset().top
+    }, 500);
+    return false;
+})
+</script>
+
+</body>

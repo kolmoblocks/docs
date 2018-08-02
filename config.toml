@@ -47,45 +47,6 @@ enforce_ssl                 = false
 # activating different components of the website
 [params.components]
     about                   = true
-    researchLibrary         = true
-    project                 = true
-    team                    = true
-    blog                    = true
-    ## Show "Share this:" social buttons
-    sharing                 = true
-[params.research]
-    # Maximum number of research papers to show on home page. Unset or
-    # comment out to show all research papers.
-    limit                   = 5
-    # For research papers without image
-    placeholderImage        = "/img/plant.jpg"
+    documentation           = true
+    summary                 = true
 
-
-[params.project]
-    # Maximum number of projects to show on home page.
-    # Unset or comment out to show all projects.
-    limit                   = 5
-    # For Projects without image
-    placeholderImage        = "/img/workday.jpg"
-[params.blog]
-
-    # Set 'true' to list all posts on home page, or set 'false' to link to s
-    # eparate blog list page
-    showAllPostsOnHomePage  = false
-    # Show latest blog post summary
-    showLatestPosts         = true
-[params.sharing]
-    twitter                 = true
-    facebook                = true
-    googleplus              = true
-
-
-# Social icons appear in introduction and contact section. Add as many more as
-# you like.
-# Find icon names here: http://fontawesome.io/cheatsheet/
-[[params.buttons]]
-    url                     = "/papers/kolmoblocks/"
-    text                    = "Read Whitepaper"
-[[params.buttons]]
-    url                     = "https://github.com/"
-    icon                    = "Watch a Talk"

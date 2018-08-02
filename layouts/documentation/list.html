@@ -1,0 +1,55 @@
+{{ partial "header.html" . }}
+<body>
+
+<div class="section" id="top">
+        <div class="container">
+                {{ partial "nav-single.html" . }}
+        </div>
+  <!-- Parent section -->
+    <div class="container hero">
+      <!-- Begin Title -->
+        <h2 class="title is-1">Documentation</h2>
+            <!-- Ranges through content/documentation/*.md -->
+            {{ range .Data.Pages }}
+            <div class="column is-one-third">
+                <a href="{{.Permalink}}">
+                    <div class="container">
+                            <!-- Begin Title -->
+                            <h1 class="title">{{ if .Params.fullTitle }}  {{ .Params.fullTitle }}{{ else }} {{ .Params.Title }} {{ end }}</h1>
+                            <div class="post-data">
+                                {{  .Params.name }} | {{ .Date.Format (.Site.Params.config.dateFormat | default "Jan 02, 2006") }} | {{ if eq 1 .ReadingTime }}{{ .ReadingTime }} minute
+                                read{{ else }}{{ .ReadingTime }} minutes read{{ end }}
+                            </div>
+                        </div>
+                </a>
+            </div>
+            {{ end }}
+        </div>
+
+        <div class="container has-text-centered top-pad">
+            <hr>
+            <a href="#top">
+                <i class="fa fa-arrow-up"></i>
+            </a>
+            <hr>
+        </div>
+
+        {{ partial "footer.html" . }}
+    </div>
+    <!-- End fade in two -->
+</div>
+<!-- End parent section -->
+
+<!-- Bitty scrolling links script -->
+<script>
+    $('a[href^="{{ .Permalink }}#"]').click(function (e) {
+        e.preventDefault();
+        var target = this.hash;
+        $('html, body').animate({
+            scrollTop: $(target).offset().top
+        }, 500);
+        return false;
+    })
+</script>
+
+</body>
