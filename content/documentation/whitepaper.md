@@ -318,8 +318,10 @@ Kolmoblocks allow you retroactively include any Merkle DAG blocks without breaki
 To see how this is possible, consider the following git commit object:
 
 ```sh
-$ git cat-file commit d6cd1e2bd19e03a81 tree
-9bedf67800b292398 parent de1eaf515ebea46de
+$ git cat-file commit d6cd1e2bd19e03a81
+tree 9bedf67800b292398
+parent de1eaf515ebea46de
+…
 ```
 
 This git object contains multiple Merkle links in git hashing format: the **tree** link refers to the git object that point to the root of the file directory descriptor, and **parent** refers to the parent commit.
@@ -328,7 +330,7 @@ We would like to convert these Merkle links to a more universal format, such as 
 
 ```sh
 tree git-link:9bedf67800b292398
-parent git-link:9bedf67800b292398
+parent git-link:de1eaf515ebea46de
 ```
 
 Now we can make the block have the original hash with just a little change to the hash function lambdablock:
