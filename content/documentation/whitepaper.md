@@ -182,8 +182,8 @@ def render():
               [’F’, ’-’]
           ]
       ]
-encoded = 0b000110111110101010
-return huffman_decode(huffman_tree,encoded)
+  encoded = 0b000110111110101010
+  return huffman_decode(huffman_tree,encoded)
 ```
 
 This kolmoblock imports and calls the lambdablock that contains the decoding logic:
