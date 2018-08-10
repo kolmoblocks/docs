@@ -35,14 +35,14 @@ eliminates the problem of serialization format versioning hell.
 
 ## Introduction
 
-Content-addressable network protocols based on hash naming scheme (hash-based CANPs), such as IPFS[[1](https://github.com/ipfs/specs)] or dat[[2](https://www.datprotocol.com)], provide unique advantages over traditional hostaddressable network protocols. The nodes of such networks are able to request and retrive content by its cryptographically secure hash from any other peer node.
+Content-addressable network protocols based on hash naming scheme (hash-based CANPs), such as IPFS[[1](https://github.com/ipfs/specs)] or dat[[2](https://www.datprotocol.com)], provide unique advantages over traditional host-addressable network protocols. The nodes of such networks are able to request and retrieve content by its cryptographically secure hash from any other peer node.
 Current proposals for hash-based CANPs offset their promise with unique challenges:
 
-1. **no composability:** Let’s say the target blob is a slight iteration over already distributed one: it could be just a single bit flip. The contentaddressable network based on hash-naming scheme would treat such a block as a completely new one; there is no capability to signal that a target block can be composed out of the other data blocks.
-2. **format versioning hell:** the context of the block’s origination (such as what producer software version was used, the asumptions on the target consumer software and so on) defines the chosen block’s serialization & compression format. Yet, the channels for distribution of both producer and consumer software are usually different from the channels used to distribute/share the data itself. That leads to the unintented effect of non-reusable and non-desirializable data blocks outside of their immediate use.
+1. **no composability:** Let’s say the target blob is a slight iteration over already distributed one: it could be just a single bit flip. The content-addressable network based on hash-naming scheme would treat such a block as a completely new one; there is no capability to signal that a target block can be composed out of the other data blocks.
+2. **format versioning hell:** the context of the block’s origination (such as what producer software version was used, the assumptions on the target consumer software and so on) defines the chosen block’s serialization & compression format. Yet, the channels for distribution of both producer and consumer software are usually different from the channels used to distribute/share the data itself. That leads to the unintended effect of non-reusable and non-deserializable data blocks outside of their immediate use.
 
 Kolmoblocks (Kolmogorov data blocks) is a block serialization format that addresses these issues. Kolmoblocks enable free-form block composability and selfdocumentation of the block’s format by design.
-Kolmogorov blocks are programming scripts for a special DSL (referred to as the kolmoblock language) that can take other kolmoblocks as an input and output (or ”render”) the target block. Kolmoblock language interpreter specification makes kolmoblocks immutable, reproducable and Turing-complete.
+Kolmogorov blocks are programming scripts for a special DSL (referred to as the kolmoblock language) that can take other kolmoblocks as an input and output (or ”render”) the target block. Kolmoblock language interpreter specification makes kolmoblocks immutable, reproducible and Turing-complete.
 
 ## Background
 
@@ -51,11 +51,11 @@ in the article.
 
 ### Content Addressable Network Protocols
 
-The network protocols at the backbone of today’s Internet (IP, TCP, HTTP) are based on the telephony’s model: they enable point-to-point communication across the network. However, the overwhelming share of today’s networks’ bandwidth is dedicated to what can be called content distribution: consumers retrieving identifiable blocks of data (blobs) such as software, text or mutimedia.
+The network protocols at the backbone of today’s Internet (IP, TCP, HTTP) are based on the telephony’s model: they enable point-to-point communication across the network. However, the overwhelming share of today’s networks’ bandwidth is dedicated to what can be called content distribution: consumers retrieving identifiable blocks of data (blobs) such as software, text or multimedia.
 
 Just like the telephone network is a poor vehicle for traditional broadcast content distribution technologies such as cable television, host-addressable nature of the current protocol stack leads to network inefficiencies.
 
-Consider, for example, a situation of several people in a room where each is using their own device to watch the same video. Each device will have to request and download its own copy of the same video from the provider’s data center, as there is no way for the local devices to coordinate and share the retrival of the content.
+Consider, for example, a situation of several people in a room where each is using their own device to watch the same video. Each device will have to request and download its own copy of the same video from the provider’s data center, as there is no way for the local devices to coordinate and share the retrieval of the content.
 
 Another example is a user of a cloud file storage service such as Dropbox trying to access the document she has on her laptop from her phone. It’s reasonable to expect that the requested data will have to make a round trip to a cloud provider’s server on the other side of the Globe even though the source of the data could be less than a meter away from its destination.
 
@@ -76,15 +76,15 @@ Now, let’s say, one day a security issue within the OS distribution was identi
 
 Even though the updated distro can differ from the previous version by a single bit flip, since the cryptographic hash of the new version is completely different, the network would treat the new data block as completely new data.
 
-As a result, a consumer that might have the old version of the OS distribution and would have been able to reproduce the new version by applying a small diff to the version it alreasy has, is forced to download the new version all over again.
+As a result, a consumer that might have the old version of the OS distribution and would have been able to reproduce the new version by applying a small diff to the version it already has, is forced to download the new version all over again.
 
-To help with situations like these, the network protocol needs to have a mechanism to communicate to the nodes that it is possible to compose a data block from the previosuly distributed blocks.
+To help with situations like these, the network protocol needs to have a mechanism to communicate to the nodes that it is possible to compose a data block from the previously distributed blocks.
 
-Within our example, the network peers can be adviced that there are two ways to obtain the new distro’s data block: either download the whole block, or only download the diff (that can be orders of magnitude smaller in size) and apply it to the data block of the old version of the distribution.
+Within our example, the network peers can be advised that there are two ways to obtain the new distro’s data block: either download the whole block, or only download the diff (that can be orders of magnitude smaller in size) and apply it to the data block of the old version of the distribution.
 
 With such a feature, the consumers that happen to already have the old version of the distribution would probably opt for only downloading and applying the diff, and the consumers that don’t have the old version (because they joined the network later, for example) would still be able to download the new version as one data block.
 
-Support for being able to convey that data blocks can be composed out of other data blocks will be refered to as block composability.
+Support for being able to convey that data blocks can be composed out of other data blocks will be referred to as block composability.
 
 ### The Great Divide
 
@@ -102,7 +102,7 @@ This section provides an architectural overview of kolmoblocks.
 
 Let’s choose to take the first 5 digits of SHA256 of data blocks as our illustrative cryptographic hash function. For example, ”ABABABF”, an ASCII-serialized string, can be can identified by its hash **CC646**.
 
-Nodes of the the hash-based CANP network are designed to be able to request their peers for this data block by its hash, and the peer node to send the requested data in response.
+Nodes of the hash-based CANP network are designed to be able to request their peers for this data block by its hash, and the peer node to send the requested data in response.
 
 Let’s consider the scenario where the serving node sends the requested block to the consumer not in a raw byte form, but as the following dynamic programming language script (say, a Python script):
 
@@ -121,9 +121,9 @@ Note that sending the data as the programming script only marginally changed the
 render = lambda : "AB"*3 + "F"
 ```
 
-Sending data as programs that output the target block is the key idea behind the kolmoblocks. Just like in the contrieved example above, the consumers run kolmoblocks in a dedicated sandboxed environment to retrieve the target block and validate its authenticity by comparing the hash.
+Sending data as programs that output the target block is the key idea behind the kolmoblocks. Just like in the contrived example above, the consumers run kolmoblocks in a dedicated sandboxed environment to retrieve the target block and validate its authenticity by comparing the hash.
 
-Now consider distributing the block **F3025:** ”ABABABF-FBABABA”. The following script takes the block **CC646** as a dependancy block and outputs the target block **F3025:**
+Now consider distributing the block **F3025:** ”ABABABF-FBABABA”. The following script takes the block **CC646** as a dependency block and outputs the target block **F3025:**
 
 ```python
 # kolmoblock
@@ -133,18 +133,17 @@ def render():
   return dep('CC646') + "-" + dep('CC646')[::-1]
 ```
 
-Kolmoblocks enable block composability: being able to refer and access other data blocks in its code. Such blocks are referred to as block dependencies and need to be ren-
-dered anf evaluated in order for the target block to be rendered.
+Kolmoblocks enable block composability: being able to refer and access other data blocks in its code. Such blocks are referred to as block dependencies and need to be rendered and evaluated in order for the target block to be rendered.
 
 ### Kolmoblock Language
 
-Kolmoblocks cannot be written for an existing general purpose programming interpreter. In order to assure security and reproducability, the kolmoblock interpreter needs to be run in a sandboxed execution environment. Such a domain-specific interpreter and the programming language it relies upon is referred to as **kolmolang** (a Kolmogorov block somain-specific language).
+Kolmoblocks cannot be written for an existing general purpose programming interpreter. In order to assure security and reproducibility, the kolmoblock interpreter needs to be run in a sandboxed execution environment. Such a domain-specific interpreter and the programming language it relies upon is referred to as **kolmolang** (a Kolmogorov block domain-specific language).
 Kolmolang’s domain of use defines the features it needs to have:
 
 1.	**homoiconic macros:** in Kolmoblock language, the code is a just a data structure abstract syntax tree (AST) of the interpreter is the data structure
-2.	**determenistic virtual state machine:** kolmoblocks enable determenistic, reproducable rendering across platforms and nodes. Kolmoblock language is parsed in a domain-specific virtual machine, defined by the set of recognizable opcodes
+2.	**deterministic virtual state machine:** kolmoblocks enable deterministic, reproducible rendering across platforms and nodes. Kolmoblock language is parsed in a domain-specific virtual machine, defined by the set of recognizable opcodes
 
-Kolmolang is fundamentally a Turing-complete dynaming programming language of Lisp programming language family [[4](arxiv.org/abs/1608.02621)] which makes it meet these requirements.
+Kolmolang is fundamentally a Turing-complete dynamic programming language of Lisp programming language family [[4](arxiv.org/abs/1608.02621)] which makes it meet these requirements.
 Among other things, the design decisions behind kolmoblocks were informed by the lessons from the other domain specific virtual machine environments: Javascript,
 JVM, Webassembly and Ethereum Virtual Machine.
 
@@ -155,9 +154,9 @@ JVM, Webassembly and Ethereum Virtual Machine.
 
 ### Lambdablocks
 
-So far, we have introduced kolmolang-based programs in the context of kolmoblocks, the point o which was to encode target blocks. We can also have general purpose kolmolang code in the rendered (target) data blocks as well.
+So far, we have introduced kolmolang-based programs in the context of kolmoblocks, the point of which was to encode target blocks. We can also have general purpose kolmolang code in the rendered (target) data blocks as well.
 
-Let’s call data blocks that have kolmolang cpode lambdablocks to highlight their properties functional programming. Just like the namesake concept of lambda functions, lambdablocks can be considered anonymous in the sense that their identifier (the cryptohash of the code) is based on what the code does, that is on its essense, not
+Let’s call data blocks that have kolmolang code lambdablocks to highlight their properties functional programming. Just like the namesake concept of lambda functions, lambdablocks can be considered anonymous in the sense that their identifier (the cryptohash of the code) is based on what the code does, that is on its essence, not
 the context it was created for.
 The following lambdablock contains a function that returns n-th Fibonacci number:
 
@@ -249,7 +248,7 @@ Validating a kolmoblock includes:
 
 While specifying what kolmoblock-based CANPs might look like is outside of the scope of this paper, it is illustrative to think through some of the practices networks that use kolmoblocks might adopt.
 Let’s say a kolmoblock-based CANP client node is interested in fetching a data block. It announces its interest to the other nodes and gets a list of kolmoblocks with the data block of interest as the target block. The client can make an estimate of the cost of obtaining and rendering each of the available komoblocks. An example algorithm for that is outlined at Fig. 1. And then optimize to fetch and render the kolmoblock that would take the least of resources to retrieve and render.
-With cryptohash-addressable naming, the same data can be shared under different blocks due to being partitioned into blocks differently.Consider an example illustated in the following figure, the text of a novel is distributed both as one block, **OC71D** and as 3 separate blocks for each book (**CA590, DDAA0, A099B**).
+With cryptohash-addressable naming, the same data can be shared under different blocks due to being partitioned into blocks differently. Consider an example illustrated in the following figure, the text of a novel is distributed both as one block, **OC71D** and as 3 separate blocks for each book (**CA590, DDAA0, A099B**).
 
 ![Fig.2](/img/Kolmoblocks/fig2.PNG)
 
@@ -261,7 +260,7 @@ In this section, we go through potential applications of kolmoblocks.
 
 ### Origin Agnostic CDNs
 
-Adoption of technologies whose value is based on network effect have an inherent chicken-and-egg problem to it. Early adopters tend to see little value in it since its support by other network nodes is minimal. For technologies of this nature to be succesful, it is important to identify an application where the adopters get value even with the limited adoption of the technology by the other agents. For kolmoblocks, origin-agnostic CDNs can be just that.
+Adoption of technologies whose value is based on network effect have an inherent chicken-and-egg problem to it. Early adopters tend to see little value in it since its support by other network nodes is minimal. For technologies of this nature to be successful, it is important to identify an application where the adopters get value even with the limited adoption of the technology by the other agents. For kolmoblocks, origin-agnostic CDNs can be just that.
 
 Both content providers and ISPs are incentivized to have CDN arrangements. IPSs would like to cache as much content as they can within their network to lower their transit costs. Content providers, on their end, want to lower their hosting costs, and both parties are interested in lower latency and better experience for customers.
 
@@ -272,7 +271,7 @@ ISPs can’t just start caching all the traffic on their side:
 
 As a result, ISPs only are able to cache content from the providers they have custom arrangements with (such as a contractual relationship), either direct ones, or via a ternary party, such as a CDN company. Setting up and managing an arrangement like this usually comes with overhead costs (legal, engineering, managing relationships with mediatory parties).
 
-If we are to take the total number of Internet Autonomous Systems as a proxy for the number of ISPs accross the world (in tens of thousands), that are spread across juristictions and estimate the content producers for which caching content would have brought considerable advantage by Alexa’s list (500), we see that solving this with the current approach would lead to having to maintain an order of 10,000,000 contractual relationships. It is easy to see that this approach does not scale. Lets see how kolmoblock-based CDN would be able to address this situation.
+If we are to take the total number of Internet Autonomous Systems as a proxy for the number of ISPs across the world (in tens of thousands), that are spread across jurisdictions and estimate the content producers for which caching content would have brought considerable advantage by Alexa’s list (500), we see that solving this with the current approach would lead to having to maintain an order of 10,000,000 contractual relationships. It is easy to see that this approach does not scale. Lets see how kolmoblock-based CDN would be able to address this situation.
 
 As an example, consider the content producer (let’s call them **example-video-site.com**) setting up the following services:
 
@@ -294,10 +293,10 @@ Kolmoblocks enable parties to be able to cache content without having to maintai
 
 ## A Blockchain to Rule Them All
 
-Recent years witnessed an explosion in interest and activity in systems based on the Merkle DAG data structure, also refered to as the blockchain technology. Some
+Recent years witnessed an explosion in interest and activity in systems based on the Merkle DAG data structure, also referred to as the blockchain technology. Some
 examples of designs with wider public adoption are git, IPFS, Bitcoin, Ethereum.
 
-At the core of these technologies is one global cryptohash-based address space. Yet the systems are not interoperatable due to the variance in the format used for Merkle links. As an example, Bitcoin blocks refer to other blocks with hex-encoded SHA-256, and git hashing function can be described by the following lambdablock:
+At the core of these technologies is one global cryptohash-based address space. Yet the systems are not interoperable due to the variance in the format used for Merkle links. As an example, Bitcoin blocks refer to other blocks with hex-encoded SHA-256, and git hashing function can be described by the following lambdablock:
 
 ```python
 # lambdablock
@@ -312,9 +311,9 @@ That is, git prepends the blob with the string **"commit"**, decimal-encoded siz
 This variance leads to the same content named and referenced in different formats across Merkle DAG-based
 systems.
 
-There is value in making Merkle links interoperatable across technologies. As an example, you would be able to reference a blockchain transaction in your git commit. It open even more possibilities with Ethereum dapps where you can link to the content stored elsewhere (be that IPFS or other cryptocurrencies) in your smart contracts.
+There is value in making Merkle links interoperable across technologies. As an example, you would be able to reference a blockchain transaction in your git commit. It open even more possibilities with Ethereum dapps where you can link to the content stored elsewhere (be that IPFS or other cryptocurrencies) in your smart contracts.
 
-To enable Merkle Link interoperability, Protocol Labs proposed IPLD, a universal content identifier format that supports multiple cryptohash formats used across systems. Adopters of IPLD are able to . Yet IPLD cannot be adopted retroactively to existing Merkle DAG blocks since changing the hash serialization format used in Merkle link changes the hash of the block itself which leads to breaking any existing Merkle links that are used to refer to this block itself.
+To enable Merkle Link interoperability, Protocol Labs proposed IPLD, a universal content identifier format that supports multiple cryptohash formats used across systems. Adopters of IPLD are able to. Yet IPLD cannot be adopted retroactively to existing Merkle DAG blocks since changing the hash serialization format used in Merkle link changes the hash of the block itself which leads to breaking any existing Merkle links that are used to refer to this block itself.
 
 Kolmoblocks allow you retroactively include any Merkle DAG blocks without breaking their links.
 
@@ -327,7 +326,7 @@ $ git cat-file commit d6cd1e2bd19e03a81 tree
 
 This git object contains multiple Merkle links in git hashing format: the **tree** link refers to the git object that point to the root of the file directory descriptor, and **parent** refers to the parent commit.
 
-We would like to convert these Merkle links to a more universal format, such as the IPLD one to make these links universal and interoperatable. For illustrative purposes, lets the format of our choice is we we prefix the git links with `git-link:`
+We would like to convert these Merkle links to a more universal format, such as the IPLD one to make these links universal and interoperable. For illustrative purposes, lets the format of our choice is we we prefix the git links with `git-link:`
 
 ```sh
 tree git-link:9bedf67800b292398
