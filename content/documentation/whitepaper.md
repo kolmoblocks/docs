@@ -144,8 +144,6 @@ Kolmolang’s domain of use defines the features it needs to have:
 2.	**deterministic virtual state machine:** kolmoblocks enable deterministic, reproducible rendering across platforms and nodes. Kolmoblock language is parsed in a domain-specific virtual machine, defined by the set of recognizable opcodes
 
 Kolmolang is fundamentally a Turing-complete dynamic programming language of Lisp programming language family [[4](https://arxiv.org/abs/1608.02621)] which makes it meet these requirements.
-Among other things, the design decisions behind kolmoblocks were informed by the lessons from the other domain specific virtual machine environments: Javascript,
-JVM, Webassembly and Ethereum Virtual Machine.
 
 ### Performance vs Expressiveness
 
