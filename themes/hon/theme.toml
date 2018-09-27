@@ -1,9 +1,6 @@
 name = "hon"
-license = "GNU Affero General Public License version 3"
 description = "Minimal, single page, smooth scrolling theme for Hugo."
 tags = ["clean", "simple", "minimal", "minimalist", "responsive", "single page", "syntax highlighting", "projects", "starter", "white", "dark"]
 features = ["responsive", "blog", "portfolio"]
 min_version = "0.44"
 
-[author]
-  name = "Damoon Azarpazhooh"
