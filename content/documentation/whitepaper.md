@@ -7,6 +7,7 @@ external_link: ""
 weight:
 draft: false
 ---
+
 Kolmogorov data blocks (or kolmoblocks) is a data block serialization format for content-
 addressable network protocols based on cryptohash naming scheme. Kolmoblocks can be thought
 of as scripts for a Turing-complete DSL that take other Merkle data blocks as an input and out-
@@ -14,7 +15,7 @@ put the target data block. Its design assures block composability, deterministic
 eliminates the problem of serialization format versioning hell.
 <!--more-->
 
-## Table Of Content
+## Table Of Contents
 
 - [Introduction](#introduction)
 - [Background](#background)
@@ -31,7 +32,6 @@ eliminates the problem of serialization format versioning hell.
   - [Clients and Servers](#clients-and-servers)
 - [Applications](#applications)
   - [Origin Agnostic CDNs](#origin-agnostic-cdns)
-  - [A Blockchain to Rule Them All](#a-blockchain-to-rule-them-all)
 
 ## Introduction
 
@@ -288,58 +288,3 @@ The content provider’s dynamic site may refer to kolmoblocks via its HTTPS gat
 However, an CDN server controlled by the ISP would be able to identify this content provider supports kolmoblocks. It would be able to overwrite the DNS record for the content provider’s kolmoblock gateway to point at its own kolmoblock gateway, retrieve the requested kolmoblocks from the content provider using a kolmoblockbased CANP, and serve the cached content to the user.
 
 Kolmoblocks enable parties to be able to cache content without having to maintain a direct relationship between each other.
-
-## A Blockchain to Rule Them All
-
-Recent years witnessed an explosion in interest and activity in systems based on the Merkle DAG data structure, also referred to as the blockchain technology. Some
-examples of designs with wider public adoption are git, IPFS, Bitcoin, Ethereum.
-
-At the core of these technologies is one global cryptohash-based address space. Yet the systems are not interoperable due to the variance in the format used for Merkle links. As an example, Bitcoin blocks refer to other blocks with hex-encoded SHA-256, and git hashing function can be described by the following lambdablock:
-
-```python
-# lambdablock
-def hash_function(block):
-  calculate_sha1 = eval(dep(’BD734’))
-  prefix = "commit %s\0" % len(block)
-  return calculate_sha1(prefix + block)
-```
-
-That is, git prepends the blob with the string **"commit"**, decimal-encoded size of the blob in bytes and the NUL byte and then takes an SHA1 hash of it.
-
-This variance leads to the same content named and referenced in different formats across Merkle DAG-based
-systems.
-
-There is value in making Merkle links interoperable across technologies. As an example, you would be able to reference a blockchain transaction in your git commit. It open even more possibilities with Ethereum dapps where you can link to the content stored elsewhere (be that IPFS or other cryptocurrencies) in your smart contracts.
-
-To enable Merkle Link interoperability, Protocol Labs proposed IPLD, a universal content identifier format that supports multiple cryptohash formats used across systems. Adopters of IPLD are able to. Yet IPLD cannot be adopted retroactively to existing Merkle DAG blocks since changing the hash serialization format used in Merkle link changes the hash of the block itself which leads to breaking any existing Merkle links that are used to refer to this block itself.
-
-Kolmoblocks allow you retroactively include any Merkle DAG blocks without breaking their links.
-
-To see how this is possible, consider the following git commit object:
-
-```sh
-$ git cat-file commit d6cd1e2bd19e03a81
-tree 9bedf67800b292398
-parent de1eaf515ebea46de
-…
-```
-
-This git object contains multiple Merkle links in git hashing format: the **tree** link refers to the git object that point to the root of the file directory descriptor, and **parent** refers to the parent commit.
-
-We would like to convert these Merkle links to a more universal format, such as the IPLD one to make these links universal and interoperable. For illustrative purposes, lets the format of our choice is we we prefix the git links with `git-link:`
-
-```sh
-tree git-link:9bedf67800b292398
-parent git-link:de1eaf515ebea46de
-```
-
-Now we can make the block have the original hash with just a little change to the hash function lambdablock:
-
-```python
-# lambdablock
-def hash_function(block):
-  git_formatted = block.replace(’git-link:’, ’’)
-  calculate_sha1 = eval(dep(’BD734’))
-  prefix = "commit %s\0" % len(git_formatted)
-  return calculate_sha1(prefix + git_formatted)
-```
