@@ -2,7 +2,7 @@
 title: "Manifest"
 fullTitle: "Manifest"
 name: "Mikhail Ignatovich"
-date: 2018-07-19T
+date: 2018-07-19
 external_link: ""
 draft: false
 ---
