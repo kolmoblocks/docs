@@ -3405,6 +3405,10 @@ a.box:active {
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.2), 0 0 0 1px #3273dc;
 }
 
+.sample_container{
+  display: flex;
+}
+
 .button {
   background-color: white;
   border-color: #dbdbdb;
