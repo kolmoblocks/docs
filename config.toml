@@ -40,7 +40,7 @@ enforce_ssl                 = false
     # Input either 'medium' or 'large' or 'fullheight'
     heroHeight              = "fullheight"
     # Title
-    heroTitle               = "Kolmoblocks"
+    heroTitle               = "KolmoLD"
     # a tagline for the title
     heroSubtitle            = "self-describing data encoding for Merkle DAG"
 

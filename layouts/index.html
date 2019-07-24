@@ -16,17 +16,18 @@
 
 <!-- Hero Start -->
 <div class="hero is-dark" style="background-image: url(/img/background.jpg)">
+    <div class="logo" ><img src="/img/logo.png" alt="Pony wearing sambrero"></div>
     <div class="hero-body">
         <div class="container has-text-centered">
             <!-- Title Start -->
-            <h1 class="title {{ if .Site.Params.config.fadeEffect | default true }}fade-in one{{ end }}">
+            <h1 class="title {{ if .Site.Params.config.fadeEffect | default true }}fade-in one{{ end }}" style="font-size: 6em; color:	#ADADAD">
 
                  {{ .Site.Params.config.heroTitle | default "Hero Title" }}
             </h1>
             <!-- Title End -->
 
             <!-- Tagline Start-->
-            <h3 class="is-3 fade-in two">
+            <h3 class="is-3 fade-in two" style="color: #ADADAD", font-size: 2em;>
                 enable a new kind of computer networks, 
                 networks that are <b>content-addressable</b>, 
                 feature <b>composable data</b>, 

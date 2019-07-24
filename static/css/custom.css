@@ -3,3 +3,9 @@
     background-color: #D3D3D3;
     width: 10em
 }
+.logo {
+    position: fixed;
+    right: 20em;
+    top: 2em;
+
+}
