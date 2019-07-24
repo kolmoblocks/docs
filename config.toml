@@ -50,3 +50,22 @@ enforce_ssl                 = false
     documentation           = true
     summary                 = true
 
+# Creating menus
+[menu]
+[[menu.main]]
+    name = "Home"
+    pre = "<i class='fa fa-heart'></i>"
+    weight = 10
+    identifier = "documentation"
+    url = "/documentation/about"
+[[menu.main]]
+    name = "Article"
+    pre = "<i class='fa fa-heart'></i>"
+    weight = 20
+    identifier = "documentation"
+    url = "/documentation/article"
+[[menu.main]]
+    name = "Resources"
+    pre = "<i class='fa fa-road'></i>"
+    weight = 30
+    url = "/documentation/learning_resources"

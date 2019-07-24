@@ -38,6 +38,7 @@
 <!-- Fonts and icon CSS -->
 <link rel="stylesheet" href="{{ "/css/font-awesome.min.css" | relURL }}">
 <link rel="stylesheet" href="{{ "/css/nunito_sans.css" | relURL }}">
+<link rel="stylesheet" href="css/custom.css">
 
 {{ if .Site.Params.config.cacheBuster }}
     <link rel="stylesheet" href="{{ (printf "css/%s-style.css?t=%d" (.Site.Params.config.theme | default "dark") now.Unix) |relURL }}">
