@@ -1,4 +1,19 @@
+---
+title: "KolmoLD"
+fullTitle: "KolmoLD: Data Modeling for the Modern Internet "
+name: "Dmitry Borzov"
+date: 2018-07-19
+external_link: ""
+draft: false
+mathjax: true
+menu: 
+  concept:
+  parent: 'concept'
+  weight: 30
+---
 
+ 
+---
 
 # KolmoLD: Data Modeling for the Modern Internet 
 ---
@@ -14,7 +29,7 @@ Traditionally, the algorithms to access given data are delivered via a channel t
 > Networks $\rightarrow$ High-Precision Networking; Programmable Networks
 
 
-## 1 INTRODUCTION
+## INTRODUCTION
 
 Whether the messages sent across a network contain images, text, or voice, from the perspective of the network layer within the OSI model, they are abstracted out to indistinguishable strings of bytes with a destination address. This design principle, the separation of concerns in the representation of data between the application layer and the lower abstraction levels, has been cited as one of the key principles that enabled the Internet's success [11].  
 
@@ -80,7 +95,7 @@ Altogether, network agents could potentially read and comprehend the data model 
 This section offers an overview of the key academic results, as well as products and projects relevant to the discussion.
 
 
-### 3.1 The MDL principle 
+### The MDL principle 
 
 The concepts of Shannon entropy and Kolmogorov complexity are often quoted as the bases for two major approaches to information theory. 
 
@@ -134,7 +149,7 @@ $R$($\overrightarrow{M}i)$=$\min_{\forall i \varepsilon M}{\bigcup}$$\{\overrigh
 
 The MDL principle suggests that the key to optimal communication is the ability to calculate the cost vectors for the set $M$ and target $D$ **for each given network node**. The KolmoLD design offers network primitives that allow for sharing the information necessary to calculate the cost vectors. 
 
-### 3.2 Information-Centric Networks
+### Information-Centric Networks
 
 The network protocols [2] that form the backbone of the Internet are based on the telephony network model: they enable point-to-point communication between two nodes by specifying the format for messages to be relayed from one node to another. As the Internet matured, the point-to-point network communication pattern gave way to the dominance of other ones such as, notably, content delivery, where one provider is tasked to deliver the same content to multiple consumers.
 
@@ -150,7 +165,7 @@ ICN's architecture is designed to gracefully handle situations such as these. Un
 
 ICN received considerable academic interest, resulting in multiple proposals and implementations. Named Data Networking (NDN) \cite{zhang_ndn} is an example of a high-profile project \cite{ndn_project}. 
 
-### 3.3 What's in a name?
+### What's in a name?
 
 An ICN architecture proposal must specify numerous aspects of the problem: routing, data discovery, scaling [14]. One design decision is at the core of all these aspects and can be used as the basis for the classification of ICN proposals: the naming scheme. This is specifically how the data objects in the network are referenced and identified.
 
@@ -176,7 +191,7 @@ We have illustrated that KolmoLD also adopts the hash-based naming scheme. Yet, 
 
 Thus, KolmoLD's approach brings about the advantages of hash-basing naming while mediating its drawbacks. 
  
-### 3.4 The right codec
+### The right codec
 As data compression format (or codec) choice mechanics is the key for efficient content delivery networking we argue that it should be incorporated as a component of network design.
 
 Choosing the optimal codec goes beyond achieving just the highest compression ratio [12]: application context and end-device capabilities also need to be considered. For example, low-power devices with limited processing power would struggle to run computationally expensive decoders. Some other codec features that might influence the ultimate choice are domain specific, such as progressive download functionality that could display a lower resolution of an image to the end-user once a part of the whole data object has been downloaded. A higher resolution of the image will then be shown as the rest of the data is received. 
@@ -201,7 +216,7 @@ KolmoLD proposes a specification for such a sandboxed environment where Turing-c
 
 The practical implementation for it is built on top of WebAssembly \cite{webassembly-spec}. This allows us to tap into the research and expertise accumulated in that community to solve a similar problem.
 
-## 4 DESIGN
+## DESIGN
 At its core, KolmoLD provides primitives to describe the relations between the data objects shared and distributed across the network. The solution consists of the following components:
 
   **(1) KolmoLD manifest syntax** that allows network nodes to describe the data objects they handle, and their relations with other data objects.
@@ -273,7 +288,7 @@ kolmold_expr ::= { doi_expr | exec_expr | match_expr }
 
 We will now review each in more detail.
 
-### 4.1 DOI expression
+### DOI expression
 Data objects are identified by the data object identifier, or the Data Object Identifier(DOI). The doi expression allows for referencing a specific data object.
 
 The doi expression syntax is defined as follows:
@@ -315,7 +330,7 @@ The data literal attribute is a special one: if the data object contains only th
 In the "Hello World" example there are two different MIME types defined. The concatenation function kolmoblock **cat** has the MIME type **$application/wasm+kolmold$**. This indicates that the **cat** kolmoblock contains program code written in the WebAssembly bytecode format. The dependency blocks that contain the strings that will be concatenated, are defined as type $text/plain$.
 
 
-### 4.2 Exec expression
+### Exec expression
 The keyword **exec** is used for a formula expression. That is, to specify a data object that is an output of a kolmoblock code sandbox execution. The **cat** kolmoblock is an example of this and illustrates how a data object in the KolmoLD framework can be described as an output of an algorithm encoded in a WebAssembly-based format.
 
 The MIME type for the kolmoblock format is  **$application/wasm+kolmold$**, which indicates that our implementation is based on the WebAssembly (wasm) module format. The standard is a subset of pure WebAssembly format, with non-deterministic operations taken out. 
@@ -360,7 +375,7 @@ dep-exprs ::= doi_expr [dep-exprs]
 
 
 
-### 4.3 Match expression
+### Match expression
 
 A key feature of KolmoLD is the ability to express the same content as generated in multiple ways. The **match** expressions are used to state that multiple descriptions of data objects, whether exec or doi expression-based, are producing the same data object.
 
@@ -412,7 +427,7 @@ This can be done with the following match expression:
 With the basic building blocks of **match**, **doi** and **exec** expressions, the manifest syntax provides primitives to describe the information about the underlying structure of the data shared across the network.
 
 
-## 5 CONCLUSION
+## CONCLUSION
 KolmoLD offers new primitives for low-level content distribution networking. Network nodes can leverage them to share and distribute information about the character and underlying structure behind the data objects that make up the content shared.
 
 This enables network nodes to make better decisions on how the content should be retrieved that take into account the context of each given network node, leading to the MDL-based network communication.
