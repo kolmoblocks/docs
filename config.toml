@@ -22,7 +22,7 @@ enforce_ssl                 = false
     # Choose 'light' or 'dark'
     theme                   = "light"
     # Include custom css files e.g. ["css/foo.css", "css/bar.css"]
-    customCSS               = []
+    customCSS               = ["css/custom.css"]
     # Turn on/off the fade-in effect
     fadeEffect              = true
     # Max 160 characters show in search results
@@ -40,7 +40,7 @@ enforce_ssl                 = false
     # Input either 'medium' or 'large' or 'fullheight'
     heroHeight              = "fullheight"
     # Title
-    heroTitle               = "Kolmoblocks"
+    heroTitle               = "KolmoLD"
     # a tagline for the title
     heroSubtitle            = "self-describing data encoding for Merkle DAG"
 
@@ -50,3 +50,22 @@ enforce_ssl                 = false
     documentation           = true
     summary                 = true
 
+# Creating menus
+[menu]
+[[menu.main]]
+    name = "Home"
+    pre = "<i class='fa fa-heart'></i>"
+    weight = 10
+    identifier = "documentation"
+    url = "/documentation/about"
+[[menu.main]]
+    name = "Article"
+    pre = "<i class='fa fa-heart'></i>"
+    weight = 20
+    identifier = "documentation"
+    url = "/documentation/article"
+[[menu.main]]
+    name = "Resources"
+    pre = "<i class='fa fa-road'></i>"
+    weight = 30
+    url = "/documentation/learning_resources"

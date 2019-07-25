@@ -1,14 +1,20 @@
 {{ partial "header.html" . }}
 <body>
-
-<div class="section" id="top">
-        <div class="container">
+<div class="wrapper" style="background-image: url(/img/background.jpg); position: relative">
+<div class="section" id="top" style="background-image: url(/img/background.jpg); position: relative; padding: 2em; padding-bottom: 10em">
+        <div class="container" style="width: 100%" style="position: absolute; float: left">
                 {{ partial "nav-single.html" . }}
         </div>
+        <div class="title-wrap" style="background-color: transparent; position: absolute; bottom: 5em; left: 10em">
+                <span style="font-size: 3em; color:	#ADADAD" class="title is-1">Documentation</span>
+              </div>
+</div>
+         <div class="content-reduct" style="width: 90%; margin: auto">
+             <!-- Begin Title -->
+     
   <!-- Parent section -->
-    <div class="container hero">
-      <!-- Begin Title -->
-        <h2 class="title is-1">Documentation</h2>
+    <div class="container hero" style="position: absolute; margin: auto; top: 15em;">
+     
             <!-- Ranges through content/documentation/*.md -->
             {{ range .Data.Pages }}
             <div class="column is-one-third">
@@ -17,24 +23,26 @@
                             <!-- Begin Title -->
                             <h1 class="title">{{ if .Params.fullTitle }}  {{ .Params.fullTitle }}{{ else }} {{ .Params.Title }} {{ end }}</h1>
                             <div class="post-data">
-                                {{  .Params.name }} | {{ .Date.Format (.Site.Params.config.dateFormat | default "Jan 02, 2006") }} | {{ if eq 1 .ReadingTime }}{{ .ReadingTime }} minute
-                                read{{ else }}{{ .ReadingTime }} minutes read{{ end }}
+                                    {{truncate 200 .Content }}
+                                    <hr style="border: 1px solid #48D1CC;">
                             </div>
                         </div>
                 </a>
             </div>
             {{ end }}
         </div>
+   
+    </div>
 
-        <div class="container has-text-centered top-pad">
-            <hr>
+    <div class="container has-text-centered top-pad" style="position: absolute">
+            
             <a href="#top">
-                <i class="fa fa-arrow-up"></i>
-            </a>
-            <hr>
+              <!--  <i class="fa fa-arrow-up"></i>
+            </a>-->
+            
         </div>
-
-        {{ partial "footer.html" . }}
+    <div class="footer-main">
+            {{ partial "footer.html" . }}
     </div>
     <!-- End fade in two -->
 </div>
@@ -51,5 +59,6 @@
         return false;
     })
 </script>
+
 
 </body>

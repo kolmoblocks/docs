@@ -1,14 +1,14 @@
 {{ partial "header.html" . }}
 
 <body>
-    <div class="section" id="top">
-        <div class="container">
+    <div class="section" id="top" style="background-image: url(/img/background.jpg); padding-top: 2em">
+        <div class="container" style="top: opx;">
                 {{ partial "nav-single.html" . }}
         </div>
         
     
         <!-- Parent section -->
-        <div class="container hero {{ if .Site.Params.config.fadeEffect }} fade-in one {{ end }}">
+        <div class="container hero {{ if .Site.Params.config.fadeEffect }} fade-in one {{ end }}" style="background-color: transparent; margin-top: 5em; margin-bottom: 5em">
             <!-- Begin Title -->
             <h1 class="tagline">{{ if .Params.fullTitle }}  {{ .Params.fullTitle }}{{ else }} {{ .Params.Title }} {{ end }}</h1>
             <div class="post-data">
@@ -37,9 +37,9 @@
 
             <div class="container has-text-centered top-pad">
                 <hr>
-                <a href="#top">
+                <!--<a href="#top">
                     <i class="fa fa-arrow-up"></i>
-                </a>
+                </a>-->
                 <hr>
             </div>
 

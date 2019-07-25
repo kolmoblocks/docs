@@ -235,7 +235,7 @@ select,
 textarea {
   margin: 0;
 }
-
+button:hover{background-color: azure; color: black}
 html {
   box-sizing: border-box;
 }
