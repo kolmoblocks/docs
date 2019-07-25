@@ -22,7 +22,7 @@ enforce_ssl                 = false
     # Choose 'light' or 'dark'
     theme                   = "light"
     # Include custom css files e.g. ["css/foo.css", "css/bar.css"]
-    customCSS               = []
+    customCSS               = ["css/custom.css"]
     # Turn on/off the fade-in effect
     fadeEffect              = true
     # Max 160 characters show in search results

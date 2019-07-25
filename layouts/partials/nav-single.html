@@ -1,3 +1,21 @@
+<style> 
+@media (max-width: 1000px) {
+  .nav-anchor {
+      display: none
+  }
+}
+.nav-menu {
+  position: relative; 
+  left: 10vw; 
+}
+.nav-item { 
+  margin-right: 2em;
+  top: 1vh;
+}
+.fa { 
+  color: #696969
+}
+  </style>
 
 <nav class="nav nav-center" style="background-color: transparent;">
     <span id="nav-toggle" class="nav-toggle"  onclick="document.getElementById('nav-menu').classList.toggle('is-active');">
@@ -6,19 +24,19 @@
       <span></span>
       <span></span>
     </span>
-    <div id="nav-menu" class="nav-left nav-menu" style="position: relative; left: 10vw;">
-      <span class="nav-item" style="margin-right: 1em; top: 1vh;">
-        <a href="/">Home</a>
-      </span>
-      <span class="nav-item" style="margin-right: 1em; top: 1vh;">
-        <a href="/documentation">Documentation</a>
-      </span>
-     
-      <span class="nav-item" style="margin-right: 1em; top: 1vh;">
-        <a href="/samples">Live Examples</a>
+    <div id="nav-menu" class="nav-left nav-menu" >
+      <span class="nav-item">
+        <i class="fa fa-home" aria-hidden="true"></i><a class="nav-anchor" href="/"> Home</a>
       </span>
       <span class="nav-item">
-          <a href="https://github.com/kolmoblocks" style="margin-right: 1em; top: 1vh;" >Github
+        <i class="fa fa-book" aria-hidden="true"></i><a class="nav-anchor" href="/documentation"> Documentation</a>
+      </span>
+     
+      <span class="nav-item">
+        <i class="fa fa-superpowers" aria-hidden="true"></i> <a class="nav-anchor" href="/samples"> Live Examples</a>
+      </span>
+      <span class="nav-item">
+        <i class="fa fa-github"  aria-hidden="true"></i><a class="nav-anchor" href="https://github.com/kolmoblocks" > Github
           </a>
         </span>
          </div>
