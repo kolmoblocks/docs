@@ -4,9 +4,8 @@
     
 }
 .logo {
-    position: fixed;
+    position: absolute;
     right: 20em;
     top: 2em;
 
 }
-.menu-button-a :hover {background-color: azure; color: black}
