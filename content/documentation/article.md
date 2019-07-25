@@ -227,7 +227,7 @@ At its core, KolmoLD provides primitives to describe the relations between the d
 
 Consider the data objects in the following "Hello World" example:
 
-![image](figures/figures/hello_world.png)
+![image](/img/hello_world.jpg)
 
 The "Hello world!" string can be constructed in two ways: by concatenating strings "Hello " and "world!", or by concatenating strings "He" and "llo world!".
 
@@ -346,7 +346,7 @@ In addition, the kolmoblock format provides the following format specifications:
 The kolmoblock WebAssembly module's linear memory with the dependency blocks preloaded can be illustrated as:
 
 
-![image](figures/figures/wasm_colmold.png)
+![image](/img/wasm_kolmold.jpg)
 *Figure 1: The dependency data objects are preloaded into kolmoblock's linear memory*
 
 
