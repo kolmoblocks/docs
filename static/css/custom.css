@@ -1,6 +1,7 @@
 .menu-button-a {
     margin-right: 2em;
-    width: 10em
+    width: 7em
+    
 }
 .logo {
     position: fixed;
@@ -8,3 +9,4 @@
     top: 2em;
 
 }
+.menu-button-a :hover {background-color: azure; color: black}
