@@ -15,6 +15,7 @@ The implemented sequence of calls is:
     - Set to reserved memory name of the argument
     - Get argument's index (_get_arg_index)
     - Reserve memory for the argument's value (_set_arg)
+    - Set to reserved memory argument's value
 - Execute WASM algorithm (_exec)
 - Get result's pointer and size (_get_result, _get_result_size)
 - If any errors occur get error's pointer and size to get an error message(_get_last_error, _get_last_error_size)

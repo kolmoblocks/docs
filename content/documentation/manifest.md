@@ -8,7 +8,7 @@ draft: false
 ---
 
 Manifest describe attributes and ways to reproduce resulting data.
-One of presentation form of The Manifest is json.
+One of presentation form of The Manifest is JSON.
 
 Manifest may contain:
 
@@ -52,6 +52,16 @@ Manifest may contain:
 	"raw" : "Hello World"
 }
 ```
+
+**Example 3 (manifest with DOI only):**
+```JSON
+{
+	"doi": {
+		"SHA256": "6F59B23AA0D0F7BEE8AEF463F1527FB025217095707B72D25F25C8AE62EA58F6"
+	}
+}
+```
+
 ---
 ## Properties
 
@@ -111,7 +121,7 @@ At this time, Kolmonet support formulas contains actor and parameters. Supported
 - WebAssembly without imports (pure WebAssembly)
 - WebAssembly with JavaScript glue code (Emscripten generated)
 
-Every entity in the formula is The Manifest. Below are examples for all types of supported formulas. Parameter's count and its names in the formula are defined [WebAssembly's interface](/documentation/wasm).
+Every entity (actor.wasm, parameters etc.) in the formula is The Manifest. Below are examples for all types of supported formulas. Parameter's count and its names in the formula are defined [WebAssembly's interface](/documentation/wasm).
 
 **Pseudo code example for pure WebAssembly formula:**
 ```json
