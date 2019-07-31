@@ -1,3 +1,4 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 {{ partial "header.html" . }}
 <body>
         <div class="modal">
@@ -58,10 +59,10 @@
 
   <!-- Start About -->
       <div class="section" id="about">
-          <div class="container">
+        <div class="container markdown {{ if .Site.Params.config.fadeEffect }} fade-in two {{ end }} top-pad">
             <!-- <h2 class="title is-2 has-text-centered">Why</h2> -->
             {{ (.Site.GetPage "page" "about").Content }}
-          </div>
+        </div>
       </div>
   <!-- End About -->
 

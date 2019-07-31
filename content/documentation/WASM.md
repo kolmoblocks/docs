@@ -4,6 +4,7 @@ fullTitle: "WebAssembly"
 name: "Mikhail Ignatovich"
 date: 2018-07-19
 external_link: ""
+weight: 3
 draft: false
 ---
 

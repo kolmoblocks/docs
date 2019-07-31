@@ -4,7 +4,7 @@ fullTitle: "Learning resources"
 name: "Dmitry Borzov"
 date: 2018-07-15T18:02:42-04:00
 external_link: ""
-weight:
+weight: 1
 draft: false
 ---
 

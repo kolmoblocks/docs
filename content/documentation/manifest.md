@@ -4,6 +4,7 @@ fullTitle: "Manifest"
 name: "Mikhail Ignatovich"
 date: 2018-07-19
 external_link: ""
+weight: 2
 draft: false
 ---
 
