@@ -38,7 +38,14 @@
 <!-- Fonts and icon CSS -->
 <link rel="stylesheet" href="{{ "/css/font-awesome.min.css" | relURL }}">
 <link rel="stylesheet" href="{{ "/css/nunito_sans.css" | relURL }}">
-<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" 
+integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" 
+crossorigin="anonymous">
+<link href="/css/custom.css">
+<link href="/css/main.680164c5.chunk.css">
+<link href="/css/main.680164c5.chunk.css.map">
+<link href="/css/light-style.css.map">
+<link href="/css/light-style.css">
 
 {{ if .Site.Params.config.cacheBuster }}
     <link rel="stylesheet" href="{{ (printf "css/%s-style.css?t=%d" (.Site.Params.config.theme | default "dark") now.Unix) |relURL }}">
@@ -48,7 +55,7 @@
 
 <!-- Custom css -->
 {{ range .Site.Params.config.customCSS -}}
-    <link rel="stylesheet" href="{{ . | relURL }}">
+    <link href="{{ . | absURL }}">
 {{- end }}
 
 <!-- Icon -->
