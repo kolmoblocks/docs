@@ -3169,7 +3169,7 @@ a.has-text-danger:hover, a.has-text-danger:focus {
   }
   .column.is-6-fullhd {
     flex: none;
-    width: 50%;
+    width: 80%;
   }
   .column.is-offset-6-fullhd {
     margin-left: 50%;
@@ -3256,7 +3256,7 @@ a.has-text-danger:hover, a.has-text-danger:focus {
 .columns.is-vcentered {
   align-items: center;
 }
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 1200px), print {
   .columns:not(.is-desktop) {
     display: flex;
   }
@@ -3335,7 +3335,7 @@ a.has-text-danger:hover, a.has-text-danger:focus {
 .tile.is-vertical > .tile.is-child:not(:last-child) {
   margin-bottom: 1.5rem !important;
 }
-@media screen and (min-width: 769px), print {
+@media screen and (min-width: 1200px), print {
   .tile:not(.is-child) {
     display: flex;
   }
@@ -3406,7 +3406,9 @@ a.box:active {
 }
 
 .sample_container{
-  display: flex;
+  display: inline-flex;
+  max-width: 100%;
+  
 }
 
 .button {
